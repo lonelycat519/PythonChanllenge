@@ -1,0 +1,21 @@
+def main():
+  fileHandle = open ('ocr.txt')
+  string = fileHandle.read()
+  fileHandle.close()
+
+  dic = {}
+  for char in string:
+    if char not in dic:
+      dic[char] = 1
+    else:
+      dic[char] += 1
+
+  num = {'key': '', 'sum': 2**20}
+  for key, value in dic.items():
+    if value < num['sum']:
+      num['key'] = key
+      num['sum'] = value
+  print num
+
+if __name__ == '__main__':
+  main()
