@@ -1,0 +1,29 @@
+def main():
+  fileHandle = open('equality.txt')
+  string = fileHandle.read()
+  fileHandle.close()
+
+  lower = 'abcdefghijklmnopqrstuvwxyz'
+  upper = lower.upper()
+
+  combo = []
+  l = True
+  u = True
+  for i in xrange(3, len(string)-4):
+    u1 = (string[i-3] in upper) and (string[i-2] in upper)
+    u1 = u1 and (string[i-1] in upper)
+    u1 = u1 and (string[i-4] not in upper)
+
+    u2 = (string[i+1] in upper) and (string[i+2] in upper)
+    u2 = u2 and (string[i+3] in upper)
+    u2 = u2 and (string[i+4] not in upper)
+    
+    u = u1 and u2
+    l = string[i] in lower
+    if u and l:
+      combo.append(string[i])
+
+  print ''.join(combo)
+
+if __name__ == '__main__':
+  main()
