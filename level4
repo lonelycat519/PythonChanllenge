@@ -15,16 +15,14 @@ def main():
     url += next
 
     request = urllib2.Request(url)
-    response = urllib2.urlopen(request)
-    
-    for line in response:
-      next = line.split()[-1]
+    response = urllib2.urlopen(request).read()
+    next = response.split()[-1]
 
     try:
       int(next)
     except:
       print url
-      print next
+      print response
 
 if __name__ == '__main__':
   main()
