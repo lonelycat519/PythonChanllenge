@@ -3,19 +3,12 @@ def main():
   string = fileHandle.read()
   fileHandle.close()
 
-  dic = {}
+  characters = 'abcdefghijklmnopqrstuvwxyz'
+  dic = []
   for char in string:
-    if char not in dic:
-      dic[char] = 1
-    else:
-      dic[char] += 1
-
-  num = {'key': '', 'sum': 2**20}
-  for key, value in dic.items():
-    if value < num['sum']:
-      num['key'] = key
-      num['sum'] = value
-  print num
+    if char in characters:
+      dic.append(char)
+  print ''.join(dic)
 
 if __name__ == '__main__':
   main()
