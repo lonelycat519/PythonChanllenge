@@ -1,0 +1,30 @@
+""" urllib may help. 
+    DON'T TRY ALL NOTHINGS, since it will never end.
+    400 times is more than enough.
+    Hint: nothing = 12345 and the next nothing is 44827
+"""
+
+import urllib2
+
+
+def main():
+  count = 0
+  next = '12345'
+  while count <= 400:
+    url = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
+    url += next
+
+    request = urllib2.Request(url)
+    response = urllib2.urlopen(request)
+    
+    for line in response:
+      next = line.split()[-1]
+
+    try:
+      int(next)
+    except:
+      print url
+      print next
+
+if __name__ == '__main__':
+  main()
